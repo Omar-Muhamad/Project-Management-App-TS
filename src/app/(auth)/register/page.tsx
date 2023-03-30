@@ -1,5 +1,7 @@
+import AuthForm from '@/components/AuthForm';
+
 const Register = () => {
-  return <div>Register</div>;
+  return <AuthForm mode='register' />;
 };
 
 export default Register;

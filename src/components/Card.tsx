@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-const Card = ({ className, childern }) => {
+const Card = ({ className, children  }) => {
   return (
     <div
       className={clsx(
@@ -8,7 +8,7 @@ const Card = ({ className, childern }) => {
         className,
       )}
     >
-      {childern}
+      {children}
     </div>
   );
 };
