@@ -2,41 +2,51 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { db } from "@/lib/db";
 import { comparePasswords, createJWT } from "@/lib/auth";
 import { serialize } from "cookie";
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function signin(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "POST") {
-    const user = await db.user.findUnique({
-      where: {
-        email: req.body.email,
+export async function POST(req: NextRequest) {
+  const cookieName = process.env.COOKIE_NAME as string;
+  const data = await req.json();
+
+  const user = await db.user.findUnique({
+    where: {
+      email: data.email,
+    },
+  });
+
+  if (!user) {
+    return NextResponse.json(
+      { error: 'Invalid login' },
+      {
+        status: 401,
       },
-    });
+    );
+  }
 
-    if (!user) {
-      res.status(401);
-      res.json({ error: "Invalid login" });
-      return;
-    }
+  const isUser = await comparePasswords(data.password, user.password);
 
-    const isUser = await comparePasswords(req.body.password, user.password);
+  if (isUser) {
+    const jwt = await createJWT(user);
 
-    if (isUser) {
-      const jwt = await createJWT(user);
-      res.setHeader(
-        "Set-Cookie",
-        serialize(process.env.COOKIE_NAME, jwt, {
-          httpOnly: true,
-          path: "/",
-          maxAge: 60 * 60 * 24 * 7,
-        })
-      );
-      res.status(201);
-      res.json({});
-    } else {
-      res.status(401);
-      res.json({ error: "Invalid login" });
-    }
+    return NextResponse.json(
+      {},
+      {
+        headers: {
+          'Set-Cookie': serialize(cookieName, jwt, {
+            httpOnly: true,
+            path: '/',
+            maxAge: 60 * 60 * 24 * 7,
+          }),
+        },
+        status: 201,
+      },
+    );
   } else {
-    res.status(402);
-    res.json({});
+    return NextResponse.json(
+      { error: 'Invalid login' },
+      {
+        status: 401,
+      },
+    );
   }
 }

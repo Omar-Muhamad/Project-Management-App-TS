@@ -2,7 +2,10 @@ import bcrypt from 'bcrypt';
 import { SignJWT, jwtVerify } from 'jose';
 import { db } from './db';
 
-const hashPassword = (password) => bcrypt.hash(password, 10);
+const hashPassword = async (password: string) => {
+  const salt = await bcrypt.genSalt(10);
+  return await bcrypt.hash(password, salt);
+};
 
 const comparePasswords = (plainTextPassword, hashPassword) =>
   bcrypt.compare(plainTextPassword, hashPassword);
@@ -11,7 +14,7 @@ const createJWT = (user) => {
   const initiation = Math.floor(Date.now() / 1000);
   const expiration = initiation + 60 * 60 * 24 * 7;
 
-  return new SignJWT({ payload: { id: user.id, email: user.email } })
+  return new SignJWT({ id: user.id, email: user.email })
     .setProtectedHeader({ alg: 'HS256', typ: 'JWT' })
     .setExpirationTime(expiration)
     .setIssuedAt(initiation)
@@ -25,7 +28,7 @@ const validateJWT = async (jwt) => {
     new TextEncoder().encode(process.env.JWT_SECRET),
   );
 
-  return payload.payload as any;
+  return payload;
 };
 
 const getUserFromCookie = async (cookies) => {

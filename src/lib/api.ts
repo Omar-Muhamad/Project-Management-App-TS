@@ -1,13 +1,12 @@
 const fetcher = async ({ url, method, body, json = true }) => {
   const response = await fetch(url, {
     method,
-    ...(body && { body }),
+    body: body && JSON.stringify(body),
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
   });
-
   if (!response.ok) {
     // handle errors
     throw new Error('API error');
@@ -20,11 +19,11 @@ const fetcher = async ({ url, method, body, json = true }) => {
 };
 
 const register = (user) => {
-  return fetcher({url: '/api/register', method: 'post', body: user})
-}
+  return fetcher({ url: '/api/register', method: 'POST', body: user });
+};
 
 const signin = (user) => {
-  return fetcher({url: '/api/signin', method: 'post', body: user})
-}
+  return fetcher({ url: '/api/signin', method: 'POST', body: user });
+};
 
 export { fetcher, register, signin };
