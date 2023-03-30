@@ -9,7 +9,7 @@ export const metadata = {
 const DashboardRootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body>
+      <body className='h-screen w-screen rainbow-mesh p-6'>
         <GlassPane className="w-full h-full flex justify-center items-center">
           {children}
         </GlassPane>

@@ -4,7 +4,7 @@ const GlassPane = ({ children, className }) => {
   return (
     <div
       className={clsx(
-        'backdrop-blur-lg bg-[rgba(255, 255, 255, 0.4)] rounded-2xl border-solid border-2 border-gray-200',
+        'bg-white bg-opacity-40 backdrop-blur-lg rounded-2xl border-solid border-2 border-gray-200',
         className,
       )}
     >
