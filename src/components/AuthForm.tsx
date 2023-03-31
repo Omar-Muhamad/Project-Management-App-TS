@@ -9,7 +9,7 @@ import Card from './Card';
 import Input from './Input';
 
 const registerContent = {
-  linkurl: '/signin',
+  linkUrl: '/signin',
   linkText: 'Already have an account?',
   header: 'Create a new account',
   subHeader: 'Just a few things to get started',
@@ -17,10 +17,10 @@ const registerContent = {
 };
 
 const signinContent = {
-  linkurl: '/register',
+  linkUrl: '/register',
   linkText: "Don't have an account?",
   header: 'Welcome back',
-  subHeader: 'Enter your credintials to access your account',
+  subHeader: 'Enter your credentials to access your account',
   buttonText: 'Sign In',
 };
 
@@ -114,7 +114,7 @@ const AuthForm = ({ mode }: { mode: 'register' | 'signin' }) => {
             <div>
               <span>
                 <Link
-                  href={content.linkurl}
+                  href={content.linkUrl}
                   className="text-blue-600 font-bold"
                 >
                   {content.linkText}

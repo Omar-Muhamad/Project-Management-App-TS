@@ -2,10 +2,7 @@ import bcrypt from 'bcrypt';
 import { SignJWT, jwtVerify } from 'jose';
 import { db } from './db';
 
-const hashPassword = async (password: string) => {
-  const salt = await bcrypt.genSalt(10);
-  return await bcrypt.hash(password, salt);
-};
+const hashPassword = (password) => bcrypt.hash(password, 10);
 
 const comparePasswords = (plainTextPassword, hashPassword) =>
   bcrypt.compare(plainTextPassword, hashPassword);
