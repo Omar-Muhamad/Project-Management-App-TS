@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, FC } from 'react';
 
 const buttonClasses = cva(
   [
-    'rounded-3xl',
+    'rounded-full',
     'font-bold',
     'hover:scale-110',
     'active:scale-100',

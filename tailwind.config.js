@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        card: 'calc(100% - 3rem)'
+      }
+    },
   },
   plugins: [],
 }

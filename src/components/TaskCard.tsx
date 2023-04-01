@@ -8,11 +8,6 @@ const TaskCard = async ({ tasks, title = 'Recent Tasks' }) => {
         <div>
           <span className="text-3xl text-gray-600">{title}</span>
         </div>
-        <div>
-          <Button intent="text" className="text-violet-600">
-            + Create New
-          </Button>
-        </div>
       </div>
       <div>
         {tasks && tasks.length ? (

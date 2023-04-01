@@ -46,28 +46,31 @@ const getData = async () => {
 const Home = async () => {
   const [projects, tasks] = await getData();
   return (
-    <div className="h-full w-full overflow-y-auto pr-6">
-      <div className=" h-full items-stretch justify-center min-h-[content]">
-        <div className="flex-1 grow flex">
+    <div className="h-full w-full overflow-y-auto py-6 pr-3">
+      <div className="h-full flex flex-col gap-6 min-h-[content]">
+        <div>
           <Suspense fallback={<GreetingSkeleton />}>
             <Greetings />
           </Suspense>
         </div>
-        <ul className="w-full flex flex-2 grow items-center flex-wrap mt-3 -m-3 ">
-          {projects.map((project) => (
-            <li key={project.id} className="w-1/3 p-3">
-              <Link href={`/project/${project.id}`}>
-                <ProjectCard project={project} />
-              </Link>
-            </li>
-          ))}
-          <li className="w-1/3 p-3">
+        <div className="projects border-2 bg-white rounded-3xl p-4">
+          <div className="mb-6 mt-2 px-2 flex justify-between">
+            <h2 className='text-3xl text-gray-700'>Projects</h2>
             <NewProject />
-          </li>
-        </ul>
-        <div className="mt-6 flex-2 grow w-full flex">
+          </div>
+          <ul className="w-full grid grid-cols-3 gap-6">
+            {projects.map((project) => (
+              <li key={project.id}>
+                <Link href={`/project/${project.id}`}>
+                  <ProjectCard project={project} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="w-full">
           <div className="w-full">
-            <TaskCard tasks={tasks}/>  
+            <TaskCard tasks={tasks} />
           </div>
         </div>
       </div>
