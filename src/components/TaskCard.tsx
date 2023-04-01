@@ -1,12 +1,12 @@
 import Button from './Button';
 import Card from './Card';
 
-const TaskCard = async ({ tasks }) => {
+const TaskCard = async ({ tasks, title = 'Recent Tasks' }) => {
   return (
     <Card className="w-full">
       <div className="flex justify-between items-center">
         <div>
-          <span className="text-3xl text-gray-600">title</span>
+          <span className="text-3xl text-gray-600">{title}</span>
         </div>
         <div>
           <Button intent="text" className="text-violet-600">
