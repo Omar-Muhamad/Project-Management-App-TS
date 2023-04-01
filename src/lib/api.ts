@@ -26,4 +26,13 @@ const signin = (user) => {
   return fetcher({ url: '/api/signin', method: 'POST', body: user });
 };
 
-export { fetcher, register, signin };
+const createNewProject = (name) => {
+  return fetcher({
+    url: '/api/project',
+    method: 'POST',
+    body: { name },
+    json: true,
+  });
+};
+
+export { fetcher, register, signin, createNewProject };

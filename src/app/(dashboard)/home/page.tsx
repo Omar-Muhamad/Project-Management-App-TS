@@ -1,5 +1,6 @@
 import Greetings from '@/components/Greetings';
 import GreetingSkeleton from '@/components/GreetingSkeleton';
+import NewProject from '@/components/NewProject';
 import ProjectCard from '@/components/ProjectCard';
 import TaskCard from '@/components/TaskCard';
 import { delay } from '@/lib/async';
@@ -60,6 +61,9 @@ const Home = async () => {
               </Link>
             </li>
           ))}
+          <li className="w-1/3 p-3">
+            <NewProject />
+          </li>
         </ul>
         <div className="mt-6 flex-2 grow w-full flex">
           <div className="w-full">
