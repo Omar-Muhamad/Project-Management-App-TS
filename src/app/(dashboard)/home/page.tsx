@@ -12,7 +12,6 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 
 const getData = async () => {
-  await delay(1000);
   const user = await getUserFromCookie(cookies());
 
   const projects = await db.project.findMany({
