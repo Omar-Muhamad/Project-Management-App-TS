@@ -78,6 +78,13 @@ After you're finished please remove all the comments and instructions!
 </details>
 
 <details>
+  <summary>Backend</summary>
+  <ul>
+    <li><a href="https://nextjs.org/">next.js</a></li>
+  </ul>
+</details>
+
+<details>
   <summary>Database</summary>
   <ul>
     <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
@@ -178,6 +185,8 @@ To run the production build, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
+- [ ] **Add email and Oauth authentication using Next auth**
+- [ ] **Edit Auth pages(signin and signup) layout**
 - [ ] **Edit project page styling**
 - [ ] **Add tasks component, api endpoint, and Modal**
 - [ ] **Add the remaining features on the side navbar**
