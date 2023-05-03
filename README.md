@@ -185,11 +185,12 @@ To run the production build, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Add email and Oauth authentication using Next auth**
-- [ ] **Edit Auth pages(signin and signup) layout**
+- [ ] **Add email and Oauth (google and github) authentication using Next auth**
+- [ ] **Edit Auth pages(sign in and sign up) layout**
 - [ ] **Edit project page styling**
-- [ ] **Add tasks component, api endpoint, and Modal**
+- [ ] **Add tasks component, API endpoint, and Modal**
 - [ ] **Add the remaining features on the side navbar**
+- [ ] **Add dark theme**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

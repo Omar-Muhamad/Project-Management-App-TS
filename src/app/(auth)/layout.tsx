@@ -13,6 +13,7 @@ const AuthRootLayout = ({ children }) => {
         <GlassPane className="w-full h-full flex justify-center items-center">
           {children}
         </GlassPane>
+        <p className='font-bold text-xl'>Success is just a good planning</p>
       </body>
     </html>
   );
